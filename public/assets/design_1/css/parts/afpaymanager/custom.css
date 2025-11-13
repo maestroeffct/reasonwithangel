@@ -1,0 +1,219 @@
+.afpmcontainer{
+    padding: 30px;
+}
+.separator{
+    border: 1px solid #eee;
+}
+.afpmcontainer select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.afpmcontainer input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#codevalidation{
+    color: #c43307;
+}
+
+.waitingpaymentloader span{
+    font-size: 16px !important;
+}
+.alertpaymentstatus{
+    margin-top: 25px;
+}
+.alertpaymentstatus p{
+    text-align: center;
+    color: red;
+    line-height: normal;
+    text-decoration: underline;
+}
+.error_message{
+    display: none;
+}
+.error_message{
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 10px;
+}
+
+/* Recap commande de reservation */
+#transactionfeeinfo{
+    display: none;
+}
+#transactionfeeinfo{
+    border: 1px solid #eeee;
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 17px;
+}
+#transactionfeeinfo h4{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.labelinfotransitem h5{
+    font-size: 16px;
+    color: #666;
+}
+.labelinfotransitem h6{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+.totalrecaplabel h5{
+    font-size: 25px !important;
+}
+.totalrecapvalue h6{
+    font-size: 25px !important;
+    color: #ff914d;
+}
+#transactionfeeinfo hr{
+    border-color: #888 !important;
+}
+#totalrecapvalue{
+    font-size: 25px;
+}
+
+#loadermodal{
+    display: none;
+    position: absolute;
+    top: 41%;
+    left: -1%;
+    z-index: 999;
+}
+.loadermodal {
+    display: inline-block;
+    border: 1px solid #fff;
+    border-top: 4px solid #666;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+    margin-left: 45%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loadermodal {
+    background-color: #fff;
+    pointer-events: none;
+}
+.formcontainer{
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: 100%;
+}
+.modalsubmitbloc{
+    justify-self: center;
+    width: 100%;
+}
+.initpaymentbtn{
+    font-size: 14px !important;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #0c14a8;
+    width: 100%;
+}
+.initpaymentbtn:hover{
+    color: #fff;
+    background-color: #000;
+}
+.finalizepaymentbtn{
+    font-size: 14px !important;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #0c14a8;
+}
+.finalizepaymentbtn:hover{
+    color: #fff;
+    background-color: #000;
+}
+.modal-title{
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+}
+#step2payment{
+    display: none;
+}
+.validationtextpaymentcont p{
+    text-align: center;
+}
+#codevalidation{
+    color: red;
+}
+.formcontainer{
+    margin: 0px;
+}
+.merchantname{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.logomodal{
+    width: 60px;
+}
+.modal-header .modal-title{
+    width: 80%;
+}
+
+.blockformitem p{
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.blockformitem hr{
+    border: 1px solid #eee;
+}
+.transactionfeeinfo hr{
+    border: 1px solid #eee;
+}
+.itemtransinfo h6{
+    font-size: 18px !important;
+}
+.waitingpaymentloader{
+    text-align: center;
+    color: #c43307;
+}
+#step3payment{
+    display: none;
+}
+
+.btn-closemodal{
+    padding: 8px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    font-weight: bolder;
+}
+
+.companysigned{
+    padding: 20px;
+    text-align: center;
+}
+.certifytect{
+    color: #0c14a8;
+}
