@@ -29,6 +29,11 @@
         &, & img {
             border-radius: 16px 16px 0 0;
         }
+
+        img {
+            object-fit: contain;
+            background-color: var(--white);
+        }
     }
 
     &__body {

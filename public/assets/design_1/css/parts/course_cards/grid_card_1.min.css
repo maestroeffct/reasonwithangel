@@ -7,6 +7,10 @@
 .course-row-card-1__image, .course-row-card-1__image img {
   border-radius: 16px;
 }
+.course-row-card-1__image img {
+  object-fit: contain;
+  background-color: var(--white);
+}
 .rtl .course-row-card-1__image {
   left: auto;
   margin-right: 0;
@@ -58,6 +62,10 @@
 }
 .course-grid-card-1__image, .course-grid-card-1__image img {
   border-radius: 16px 16px 0 0;
+}
+.course-grid-card-1__image img {
+  object-fit: contain;
+  background-color: var(--white);
 }
 .course-grid-card-1__body {
   height: 192px;

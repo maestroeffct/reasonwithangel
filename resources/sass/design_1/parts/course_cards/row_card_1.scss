@@ -12,6 +12,11 @@
             border-radius: 16px;
         }
 
+        img {
+            object-fit: contain;
+            background-color: var(--white);
+        }
+
         .rtl & {
             left: auto;
             margin-right: 0;
