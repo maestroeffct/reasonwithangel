@@ -15,14 +15,13 @@
                 <input type="hidden" name="name" value="referral">
 
 
-                <div class="form-group custom-switches-stacked">
-                    <label class="custom-switch pl-0 d-flex align-items-center">
-                        <input type="hidden" name="value[status]" value="0">
-                        <input type="checkbox" name="value[status]" id="referralStatusSwitch" value="1" {{ (!empty($itemValue) and !empty($itemValue['status']) and $itemValue['status']) ? 'checked="checked"' : '' }} class="custom-switch-input"/>
+                <div class="form-group mt-1 custom-switches-stacked">
+                    <label class="custom-switch pl-0">
+                        <input type="hidden" name="value[content_translate]" value="0">
                         <span class="custom-switch-indicator"></span>
-                        <label class="custom-switch-description mb-0 cursor-pointer" for="referralStatusSwitch">{{ trans('admin/main.active') }}</label>
+                        <label class="custom-switch-description mb-0 cursor-pointer" for="contentTranslate">{{ trans('admin/main.active') }}</label>
                     </label>
-                    <div class="text-gray-500 text-small mt-1">{{ trans('admin/main.referral_hint') }}</div>
+                    <div class="text-muted text-small mt-1">Paid Plugin</div>
                 </div>
 
                 <div class="form-group custom-switches-stacked">

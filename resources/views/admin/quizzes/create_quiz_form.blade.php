@@ -35,10 +35,7 @@
                         <div class="form-group mt-3">
                             <label class="input-label">{{ trans('panel.webinar') }}</label>
                             <select name="ajax[{{ !empty($quiz) ? $quiz->id : 'new' }}][webinar_id]" class="js-ajax-webinar_id custom-select">
-                                <option {{ !empty($quiz) ? 'disabled' : 'selected disabled' }} value="">{{ trans('panel.choose_webinar') }}</option>
-                                @foreach($webinars as $webinar)
-                                    <option value="{{ $webinar->id }}" {{  (!empty($quiz) and $quiz->webinar_id == $webinar->id) ? 'selected' : '' }}>{{ $webinar->title }}</option>
-                                @endforeach
+                            <option>Paid plugin</option>
                             </select>
                             <div class="invalid-feedback"></div>
                         </div>

@@ -48,13 +48,22 @@
                 </div>
 
 
-                <div class="form-group custom-switches-stacked">
-                    <label class="custom-switch pl-0 d-flex align-items-center">
-                        <input type="hidden" name="value[multi_currency]" value="0">
-                        <input type="checkbox" name="value[multi_currency]" id="multiCurrencySwitch" value="1" {{ (!empty($itemValue) and !empty($itemValue['multi_currency']) and $itemValue['multi_currency']) ? 'checked="checked"' : '' }} class="custom-switch-input"/>
+                <div class="form-group mt-3 custom-switches-stacked">
+                    <label class="custom-switch pl-0">
+                        <input type="hidden" name="value[content_translate]" value="0">
                         <span class="custom-switch-indicator"></span>
-                        <label class="custom-switch-description mb-0 cursor-pointer" for="multiCurrencySwitch">{{ trans('update.enable_multi_currency') }}</label>
+                        <label class="custom-switch-description mb-0 cursor-pointer" for="contentTranslate">{{ trans('update.enable_multi_currency') }}</label>
                     </label>
+                    <div class="text-muted text-small mt-1">Paid Plugin</div>
+                </div>
+
+                <div class="form-group js-guests-default-currency-section {{ (!empty($itemValue) and !empty($itemValue['multi_currency'])) ? : "d-none" }}">
+                    <label class="input-label d-block">{{ trans('admin/main.guest_default_currency') }}</label>
+                    <select name="value[visitors_default_currency]" class="form-control">
+                        <option value="default" @if(empty($itemValue) or empty($itemValue['visitors_default_currency']) or $itemValue['visitors_default_currency'] == 'default') selected @endif>{{ trans('admin/main.use_default_currency') }}</option>
+                        <option>{{ trans('admin/main.use_ip_currency') }} (Paid Plugin)</option>
+                    </select>
+                    <div class="text-gray-500 text-small mt-1">{{ trans('admin/main.guest_default_currency_hint') }}</div>
                 </div>
 
                 <section class="js-multi-currency-section mt-3 {{ (!empty($itemValue) and !empty($itemValue['multi_currency'])) ? : "d-none" }}">

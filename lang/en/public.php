@@ -388,6 +388,7 @@ return [
 'forbidden_request_toast_lang' => 'Forbidden Request',
 'forbidden_request_toast_msg_lang' => 'You do not have access to this content.',
 'redirect_to_app' => 'Redirecting to the app',
+'get_commission_from_referral' => 'Get Commission from Referral',
 
 
 ];

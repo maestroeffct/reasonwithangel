@@ -1,58 +1,51 @@
-<div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="card-statistic">
-            <div class="card-statistic__mask"></div>
-            <div class="card-statistic__wrap">
-                <div class="d-flex align-items-start justify-content-between">
-                    <span class="text-gray-500 mt-8">{{trans('update.total_users')}}</span>
-                    <div class="d-flex-center size-48 bg-primary-30 rounded-12">
-                        <x-iconsax-bul-people class="icons text-primary" width="24px" height="24px"/>
-                    </div>
+@extends('admin.layouts.app')
+
+@section('content')
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ $pageTitle }}</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="/admin/">{{trans('admin/main.dashboard')}}</a>
                 </div>
-                <h5 class="font-24 mt-12 line-height-1 text-black">{{ $totalUsers }}</h5>
+                <div class="breadcrumb-item">{{ $pageTitle}}</div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="card-statistic">
-            <div class="card-statistic__mask"></div>
-            <div class="card-statistic__wrap">
-                <div class="d-flex align-items-start justify-content-between">
-                    <span class="text-gray-500 mt-8">{{trans('financial.total_amount')}}</span>
-                    <div class="d-flex-center size-48 bg-success-30 rounded-12">
-                        <x-iconsax-bul-shopping-cart class="icons text-success" width="24px" height="24px"/>
+
+        <div class="section-body">
+
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+
+
+
+                            <div class="empty-state mx-auto d-block"  data-width="900" >
+                                <img class="img-fluid col-md-6" src="/assets/default/img/plugin.svg" alt="image">
+                                <h3 class="mt-3">This is a paid plugin!</h3>
+                                <h5 class="lead">
+                                    You can purchase it by <strong><a href="https://codecanyon.net/item/universal-plugins-bundle-for-rocket-lms/33297004">this link</a></strong> on Codecanyon.
+                                </h5>             
+                              </div>
+
+
+                            
+                        </div>
+
+                      
+
                     </div>
                 </div>
-                <h5 class="font-24 mt-12 line-height-1 text-black">{{ $totalAmount }}</h5>
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="card-statistic">
-            <div class="card-statistic__mask"></div>
-            <div class="card-statistic__wrap">
-                <div class="d-flex align-items-start justify-content-between">
-                    <span class="text-gray-500 mt-8">{{trans('update.total_items')}}</span>
-                    <div class="d-flex-center size-48 bg-accent-30 rounded-12">
-                        <x-iconsax-bul-bag-happy class="icons text-accent" width="24px" height="24px"/>
-                    </div>
-                </div>
-                <h5 class="font-24 mt-12 line-height-1 text-black">{{ $totalItems }}</h5>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="card-statistic">
-            <div class="card-statistic__mask"></div>
-            <div class="card-statistic__wrap">
-                <div class="d-flex align-items-start justify-content-between">
-                    <span class="text-gray-500 mt-8">{{ trans('update.total_sent_reminders') }}</span>
-                    <div class="d-flex-center size-48 bg-secondary-30 rounded-12">
-                        <x-iconsax-bul-timer class="icons text-secondary" width="24px" height="24px"/>
-                    </div>
-                </div>
-                <h5 class="font-24 mt-12 line-height-1 text-black">{{ $totalSentReminders }}</h5>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
+
+
+
+
+
+@endsection
+
+@push('scripts_bottom')
+
+@endpush

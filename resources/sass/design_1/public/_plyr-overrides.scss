@@ -4,7 +4,7 @@
     pointer-events: none !important;
   }
 
-  /* Ensure Plyr controls remain interactive */
+  
   .plyr__controls,
   .plyr__control,
   .plyr__progress,
@@ -12,7 +12,7 @@
     pointer-events: auto;
   }
 
-  /* Optional: neutral cursor over the video area */
+  
   .plyr__video-wrapper {
     cursor: default;
   }

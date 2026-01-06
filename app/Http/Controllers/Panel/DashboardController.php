@@ -43,6 +43,10 @@ class DashboardController extends Controller
         $data['giftModal'] = $this->showGiftModal($user);
 
 
+        $generalSettings = getGeneralSettings();
+        $rtlLanguages = !empty($generalSettings['rtl_languages']) ? $generalSettings['rtl_languages'] : [];
+        $data['isRtl'] = ((in_array(mb_strtoupper(app()->getLocale()), $rtlLanguages)) or (!empty($generalSettings['rtl_layout']) and $generalSettings['rtl_layout'] == 1));
+
         return view('design_1.panel.dashboard.index', $data);
     }
 
@@ -167,7 +171,7 @@ class DashboardController extends Controller
 
     private function handleDashboardUpcomingEvents($user)
     {
-        $eventsController = (new EventsController());
+        $eventsController = (new EventsCalendarController());
         $eventsController->user = $user;
         $eventsController->userBoughtWebinarsIds = $user->getPurchasedCoursesIds();
 

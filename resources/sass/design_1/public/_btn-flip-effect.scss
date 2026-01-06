@@ -78,6 +78,15 @@
         }
     }
 
+    &.btn-flip-effect__left-minus-54:after {
+        left: calc(-54% - 14px);
+
+        .rtl & {
+            left: auto;
+            right: calc(-54% - 14px);
+        }
+    }
+
     &.btn-flip-effect__text-black:after {
         color: var(--black);
     }

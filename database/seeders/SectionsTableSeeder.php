@@ -659,6 +659,44 @@ class SectionsTableSeeder extends Seeder
         Section::updateOrCreate(['id' => 3176], ['name' => 'admin_landing_builder_settings', 'section_group_id' => 3170, 'caption' => 'Settings']);
 
 
+        // Attendances 3190 - 3199
+        Section::updateOrCreate(['id' => 3190], ['name' => 'admin_attendances', 'caption' => 'Attendances']);
+        Section::updateOrCreate(['id' => 3191], ['name' => 'admin_attendances_history', 'section_group_id' => 3190, 'caption' => 'History']);
+        Section::updateOrCreate(['id' => 3192], ['name' => 'admin_attendances_history_details', 'section_group_id' => 3190, 'caption' => 'History Details']);
+        Section::updateOrCreate(['id' => 3193], ['name' => 'admin_attendances_settings', 'section_group_id' => 3190, 'caption' => 'Settings']);
+
+        // Imports From CSV 3200 - 3209
+        Section::updateOrCreate(['id' => 3200], ['name' => 'admin_imports_from_csv', 'caption' => 'Imports From CSV']);
+        Section::updateOrCreate(['id' => 3201], ['name' => 'admin_imports_from_csv_history', 'section_group_id' => 3200, 'caption' => 'History']);
+        Section::updateOrCreate(['id' => 3202], ['name' => 'admin_imports_from_csv_courses', 'section_group_id' => 3200, 'caption' => 'Import Courses']);
+        Section::updateOrCreate(['id' => 3203], ['name' => 'admin_imports_from_csv_categories', 'section_group_id' => 3200, 'caption' => 'Import Categories']);
+        Section::updateOrCreate(['id' => 3204], ['name' => 'admin_imports_from_csv_users', 'section_group_id' => 3200, 'caption' => 'Import Users']);
+        Section::updateOrCreate(['id' => 3205], ['name' => 'admin_imports_from_csv_products', 'section_group_id' => 3200, 'caption' => 'Import Products']);
+
+        // Events 3210 - 3229
+        Section::updateOrCreate(['id' => 3210], ['name' => 'admin_events', 'caption' => 'Events']);
+        Section::updateOrCreate(['id' => 3211], ['name' => 'admin_events_create', 'section_group_id' => 3210, 'caption' => 'Create/Edit']);
+        Section::updateOrCreate(['id' => 3212], ['name' => 'admin_events_lists', 'section_group_id' => 3210, 'caption' => 'Lists']);
+        Section::updateOrCreate(['id' => 3213], ['name' => 'admin_events_delete', 'section_group_id' => 3210, 'caption' => 'Delete']);
+        Section::updateOrCreate(['id' => 3214], ['name' => 'admin_events_tickets', 'section_group_id' => 3210, 'caption' => 'Tickets (Create/Edit/Delete)']);
+        Section::updateOrCreate(['id' => 3215], ['name' => 'admin_events_speakers', 'section_group_id' => 3210, 'caption' => 'Speakers (Create/Edit/Delete)']);
+        Section::updateOrCreate(['id' => 3216], ['name' => 'admin_events_settings', 'section_group_id' => 3210, 'caption' => 'Settings']);
+        Section::updateOrCreate(['id' => 3217], ['name' => 'admin_events_lists_export_excel', 'section_group_id' => 3210, 'caption' => 'Export Lists (excel)']);
+        Section::updateOrCreate(['id' => 3218], ['name' => 'admin_events_sold_tickets', 'section_group_id' => 3210, 'caption' => 'Event Sold Tickets']);
+        Section::updateOrCreate(['id' => 3219], ['name' => 'admin_event_comments', 'section_group_id' => 3210, 'caption' => 'Comments']);
+        Section::updateOrCreate(['id' => 3220], ['name' => 'admin_event_send_notification', 'section_group_id' => 3210, 'caption' => 'Send Notification To Event Students']);
+
+
+        // Meeting Packages 3230 - 3239
+        Section::updateOrCreate(['id' => 3230], ['name' => 'admin_meeting_packages', 'caption' => 'Meeting Packages']);
+        Section::updateOrCreate(['id' => 3231], ['name' => 'admin_meeting_packages_create', 'section_group_id' => 3230, 'caption' => 'Create/Edit']);
+        Section::updateOrCreate(['id' => 3232], ['name' => 'admin_meeting_packages_lists', 'section_group_id' => 3230, 'caption' => 'Lists']);
+        Section::updateOrCreate(['id' => 3233], ['name' => 'admin_meeting_packages_delete', 'section_group_id' => 3230, 'caption' => 'Delete']);
+        Section::updateOrCreate(['id' => 3234], ['name' => 'admin_meeting_packages_sold', 'section_group_id' => 3230, 'caption' => 'Sold Packages']);
+        Section::updateOrCreate(['id' => 3235], ['name' => 'admin_meeting_packages_settings', 'section_group_id' => 3230, 'caption' => 'Settings']);
+
+
+
         /* Run Panel Sections */
         $this->runPanelSections();
     }
@@ -821,6 +859,19 @@ class SectionsTableSeeder extends Seeder
         $this->createPanelSection(['id' => 302], ['name' => 'panel_others_profile_url', 'section_group_id' => 300, 'caption' => 'Profile Url']);
         $this->createPanelSection(['id' => 303], ['name' => 'panel_others_logout', 'section_group_id' => 300, 'caption' => 'Logout']);
 
+        // Attendances 320 - 329
+        $this->createPanelSection(['id' => 320], ['name' => 'panel_attendances', 'caption' => 'Attendances']);
+        $this->createPanelSection(['id' => 321], ['name' => 'panel_attendances_lists', 'section_group_id' => 320, 'caption' => 'Attendances lists']);
+
+        // Events 330 - 339
+        $this->createPanelSection(['id' => 330], ['name' => 'panel_events', 'caption' => 'Events']);
+        $this->createPanelSection(['id' => 331], ['name' => 'panel_events_create', 'section_group_id' => 330, 'caption' => 'create/edit']);
+        $this->createPanelSection(['id' => 332], ['name' => 'panel_events_lists', 'section_group_id' => 330, 'caption' => 'Lists']);
+        $this->createPanelSection(['id' => 333], ['name' => 'panel_events_sold_tickets_lists', 'section_group_id' => 330, 'caption' => 'Event Sold Tickets']);
+        $this->createPanelSection(['id' => 334], ['name' => 'panel_events_organization_lists', 'section_group_id' => 330, 'caption' => 'Organization Events']);
+        $this->createPanelSection(['id' => 335], ['name' => 'panel_events_my_purchases', 'section_group_id' => 330, 'caption' => 'My Purchases']);
+        $this->createPanelSection(['id' => 336], ['name' => 'panel_events_my_comments', 'section_group_id' => 330, 'caption' => 'My Comments']);
+        $this->createPanelSection(['id' => 337], ['name' => 'panel_events_comments', 'section_group_id' => 330, 'caption' => 'Comments']);
 
     }
 

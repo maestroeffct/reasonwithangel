@@ -6,6 +6,7 @@ use App\Enums\LandingBuilderComponentsNames;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LandingBuilder\traits\LandingBuilderTrait;
 use App\Http\Controllers\LandingBuilder\traits\LandingComponentsTrait;
+use App\Models\Category;
 use App\Models\Landing;
 use App\Models\LandingComponent;
 use App\Models\Role;
@@ -127,25 +128,7 @@ class LandingBuilderComponentController extends Controller
                 ])
                 ->orderBy('created_at', 'desc')
                 ->get();
-        } else if ($landingComponent->landingBuilderComponent->name == LandingBuilderComponentsNames::MEETING_BOOKING_LIST) {
-            $data['meetingInstructors'] = User::query()->select('id', 'full_name', 'username', 'avatar', 'avatar_settings', 'email', 'mobile')
-                ->where('status', 'active')
-                ->whereHas('meeting', function ($query) {
-                    $query->where('disabled', false)
-                        ->whereHas('meetingTimes');
-                })->get();
 
-        } else if ($landingComponent->landingBuilderComponent->name == LandingBuilderComponentsNames::SUBSCRIPTION_PLANS) {
-            $data['subscriptionPlans'] = Subscribe::query()->get();
-        } else if ($landingComponent->landingBuilderComponent->name == LandingBuilderComponentsNames::SLIDING_TESTIMONIALS_2_ROWS) {
-            $data['testimonials'] = Testimonial::query()
-                ->where('status', 'active')
-                ->get();
-        } else if ($landingComponent->landingBuilderComponent->name == LandingBuilderComponentsNames::ORGANIZATIONS) {
-            $data['organizations'] = User::query()->select('id', 'full_name', 'username', 'avatar', 'avatar_settings', 'email', 'mobile')
-                ->where('role_name', Role::$organization)
-                ->where('status', 'active')
-                ->get();
         } else if ($landingComponent->landingBuilderComponent->name == LandingBuilderComponentsNames::INSTRUCTORS) {
             $data['instructors'] = User::query()->select('id', 'full_name', 'username', 'avatar', 'avatar_settings', 'email', 'mobile')
                 ->where('role_name', Role::$teacher)

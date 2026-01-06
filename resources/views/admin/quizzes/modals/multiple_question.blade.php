@@ -1,5 +1,5 @@
 <div class="@if(!empty($quiz)) multipleQuestionModal{{ $quiz->id }} @endif {{ empty($question_edit) ? 'd-none' : ''}}">
-    <div class="custom-modal-body">
+    <div class="custom-modal-body p-16">
         <h2 class="section-title after-line">{{ trans('quiz.multiple_choice_question') }}</h2>
 
         <div class="quiz-questions-form" data-action="{{ getAdminPanelUrl() }}/quizzes-questions/{{ empty($question_edit) ? 'store' : $question_edit->id.'/update' }}" method="post">

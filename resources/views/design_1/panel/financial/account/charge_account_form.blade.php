@@ -160,7 +160,7 @@
                 <div class="col-12 col-md-4 js-offline-payment-input {{ (!$showOfflineFields) ? 'd-none' : '' }}">
                     <div class="form-group">
                         <label for="dateInput" class="form-group-label">{{ trans('public.date_time') }}</label>
-                        <input type="text" name="date" id="dateInput" class="form-control datepicker js-default-init-date-picker @error('date') is-invalid @enderror" value="{{ !empty($editOfflinePayment) ? dateTimeFormat($editOfflinePayment->pay_date, 'Y-m-d H:i', false) : old('date') }}" data-format="YYYY/MM/DD"/>
+                        <input type="text" name="date" id="dateInput" class="form-control datetimepicker js-default-init-date-picker @error('date') is-invalid @enderror" value="{{ !empty($editOfflinePayment) ? dateTimeFormat($editOfflinePayment->pay_date, 'Y-m-d H:i', false) : old('date') }}" data-format="YYYY/MM/DD HH:mm" autocomplete="off"/>
                         @error('date')
                         <div class="invalid-feedback"> {{ $message }}</div>
                         @enderror

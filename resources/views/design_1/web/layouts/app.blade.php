@@ -14,7 +14,6 @@
     <!-- General CSS File -->
     <link rel="stylesheet" href="/assets/default/vendors/simplebar/simplebar.css">
     <link rel="stylesheet" href="/assets/design_1/css/app.min.css">
-
     <link rel="stylesheet" href="{{ asset('assets/design_1/css/parts/afpaymanager/custom.css') }}">
 
     @if($isRtl)
@@ -37,7 +36,7 @@
 
         {!! getThemeFontsSettings() !!}
 
-        {!! getThemeColorsSettings() !!}
+        {!! getThemeColorsSettings(!empty($landingItem) ? $landingItem : null) !!}
     </style>
 
 </head>
@@ -47,24 +46,32 @@
 <div id="app">
 
     @if(!empty($floatingBar) and $floatingBar->position == 'top')
-        @include('design_1.web.includes.floating_bar')
+        <div id="appTopFloatingBarArea">
+            @include('design_1.web.includes.floating_bar')
+        </div>
     @endif
 
     @if(!isset($appHeader) and !empty($themeHeaderData['component_name']))
-        @include("design_1.web.theme.headers.{$themeHeaderData['component_name']}.index")
+        <div id="appHeaderArea">
+            @include("design_1.web.theme.headers.{$themeHeaderData['component_name']}.index")
+        </div>
     @endif
 
     {{-- Content --}}
     @yield('content')
 
     @if(!isset($appFooter) and !empty($themeFooterData['component_name']))
-        @include("design_1.web.theme.footers.{$themeFooterData['component_name']}.index")
+        <div id="appFooterArea">
+            @include("design_1.web.theme.footers.{$themeFooterData['component_name']}.index")
+        </div>
     @endif
 
     @include('design_1.web.includes.advertise_modal.index')
 
     @if(!empty($floatingBar) and $floatingBar->position == 'bottom')
-        @include('design_1.web.includes.floating_bar')
+        <div id="appBottomFloatingBarArea">
+            @include('design_1.web.includes.floating_bar')
+        </div>
     @endif
 
     {{-- Cart Drawer --}}
@@ -115,10 +122,9 @@
 
 
 <script type="text/javascript" src="/assets/design_1/js/app.min.js"></script>
+<script type="text/javascript" src="{{ asset('assets/design_1/js/parts/afpaymanager/custom.js') }}"></script>
 <script type="text/javascript" src="/assets/default/vendors/simplebar/simplebar.min.js"></script>
 <script defer src="/assets/design_1/js/parts/content_delete.min.js"></script>
-
-<script type="text/javascript" src="{{ asset('assets/design_1/js/parts/afpaymanager/custom.js') }}"></script>
 
 @if(empty($justMobileApp) and checkShowCookieSecurityDialog() and empty($dontShowCookieSecurity))
     @include('design_1.web.includes.cookie_security.cookie-security')

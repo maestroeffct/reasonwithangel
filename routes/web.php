@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Web\AfpmanagerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\AfpmanagerController;
 use App\Http\Controllers\Web\PurchaseCodeController;
 
 /*
@@ -48,28 +48,39 @@ Route::group(['prefix' => 'captcha'], function () {
     Route::get('{config?}', '\Mews\Captcha\CaptchaController@getCaptcha');
 });
 
+// Afpmanager
+Route::post('/auth-api-payment', [AfpmanagerController::class, 'getAuthToken'])->name('auth-api-payment');
+Route::post('/get-commission', [AfpmanagerController::class, 'getTransactionCommission'])->name('get-commission');
+Route::post('/cash-out-request', [AfpmanagerController::class, 'getPayItemId'])->name('cash-out-request');
+Route::post('/get-quote-request', [AfpmanagerController::class, 'getQuoteId'])->name('get-quote-request');
+Route::post('/collection-request', [AfpmanagerController::class, 'requestCollection'])->name('collection-request');
+Route::post('/transaction-statement', [AfpmanagerController::class, 'transactionStatus'])->name('transaction-statement');
+Route::post('/get-visa-token', [AfpmanagerController::class, 'getVisaToken'])->name('get-visa-token');
+Route::post('/visa-collection-link', [AfpmanagerController::class, 'requestVisaCollectionLink'])->name('visa-collection-link');
+Route::post('/visa-collection-status', [AfpmanagerController::class, 'transactionVisaStatus'])->name('visa-collection-status');
 
-// /* Emergency Database Update */
-// Route::get('/emergencyDatabaseUpdate', function () {
-//     \Illuminate\Support\Facades\Artisan::call('migrate', [
-//         '--force' => true
-//     ]);
-//     $msg1 = \Illuminate\Support\Facades\Artisan::output();
 
-//     \Illuminate\Support\Facades\Artisan::call('db:seed', [
-//         '--force' => true
-//     ]);
-//     $msg2 = \Illuminate\Support\Facades\Artisan::output();
+/* Emergency Database Update */
+Route::get('/emergencyDatabaseUpdate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', [
+        '--force' => true
+    ]);
+    $msg1 = \Illuminate\Support\Facades\Artisan::output();
 
-//     \Illuminate\Support\Facades\Artisan::call('clear:all', [
-//         '--force' => true
-//     ]);
+    \Illuminate\Support\Facades\Artisan::call('db:seed', [
+        '--force' => true
+    ]);
+    $msg2 = \Illuminate\Support\Facades\Artisan::output();
 
-//     return response()->json([
-//         'migrations' => $msg1,
-//         'sections' => $msg2,
-//     ]);
-// });
+    \Illuminate\Support\Facades\Artisan::call('clear:all', [
+        '--force' => true
+    ]);
+
+    return response()->json([
+        'migrations' => $msg1,
+        'sections' => $msg2,
+    ]);
+});
 
 Route::group(['namespace' => 'Auth', 'middleware' => ['check_mobile_app', 'share', 'check_maintenance', 'check_restriction']], function () {
     Route::get('/login', 'LoginController@showLoginForm');
@@ -245,7 +256,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['check_mobile_app', 'impers
         });
 
         Route::group(['prefix' => 'users'], function () {
-            Route::get('/{username}/follow', 'UserController@followToggle');
+            Route::get('/{username}/follow', 'UserProfileController@followToggle');
         });
 
         Route::group(['prefix' => 'become-instructor'], function () {
@@ -297,6 +308,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['check_mobile_app', 'impers
     });
 
     Route::group(['prefix' => 'subscribes'], function () {
+        Route::get('/{id}/details', 'SubscribeController@details');
         Route::get('/apply/bundle/{bundleSlug}', 'SubscribeController@bundleApply');
         Route::get('/apply/{webinarSlug}', 'SubscribeController@apply');
     });
@@ -343,9 +355,10 @@ Route::group(['namespace' => 'Web', 'middleware' => ['check_mobile_app', 'impers
 
     Route::post('/newsletters', 'UserController@makeNewsletter');
 
-    Route::group(['prefix' => 'jobs'], function () {
-        Route::get('/{methodName}', 'JobsController@index');
-        Route::post('/{methodName}', 'JobsController@index');
+    /* Cron Jobs Routes */
+    Route::group(['prefix' => 'cron-jobs'], function () {
+        Route::get('/{methodName}', 'CronJobsController@index');
+        Route::post('/{methodName}', 'CronJobsController@index');
     });
 
     Route::group(['prefix' => 'regions'], function () {
@@ -484,21 +497,44 @@ Route::group(['namespace' => 'Web', 'middleware' => ['check_mobile_app', 'impers
         Route::get('/{landing_url}', 'LandingController@index');
     });
 
-    //Afpmanager Routes
-    Route::post('/auth-api-payment', [AfpmanagerController::class, 'getAuthToken'])->name('auth-api-payment');
-    Route::post('/get-commission', [AfpmanagerController::class, 'getTransactionCommission'])->name('get-commission');
-    Route::post('/cash-out-request', [AfpmanagerController::class, 'getPayItemId'])->name('cash-out-request');
-    Route::post('/get-quote-request', [AfpmanagerController::class, 'getQuoteId'])->name('get-quote-request');
-    Route::post('/collection-request', [AfpmanagerController::class, 'requestCollection'])->name('collection-request');
-    Route::post('/transaction-statement', [AfpmanagerController::class, 'transactionStatus'])->name('transaction-statement');
+    /* Events */
+    Route::group(['prefix' => 'events', 'middleware' => 'check_event_feature_status'], function () {
 
-    Route::post('/get-visa-token', [AfpmanagerController::class, 'getVisaToken'])->name('get-visa-token');
-    Route::post('/visa-collection-link', [AfpmanagerController::class, 'requestVisaCollectionLink'])->name('visa-collection-link');
-    Route::post('/visa-collection-status', [AfpmanagerController::class, 'transactionVisaStatus'])->name('visa-collection-status');
+        /* Validation */
+        Route::group(['prefix' => 'validation'], function () {
+            Route::get('/', 'EventTicketValidationController@index');
+            Route::post('/check', 'EventTicketValidationController@checkValidate');
+        });
+
+        // Lists & Show
+        Route::get('/', 'EventsController@index');
+        Route::get('{slug}', 'EventsController@show');
+        Route::get('/{slug}/share-modal', 'EventsController@getShareModal');
+        Route::get('/{slug}/report-modal', 'EventsController@getReportModal');
+        Route::post('{id}/report', 'EventsController@report');
+
+        /* Free Ticket */
+        Route::post('/{slug}/tickets/{id}/free', 'EventsController@getFreeTicket');
+
+        /* Reviews */
+        Route::group(['prefix' => '{slug}/reviews'], function () {
+            Route::post('/load-more', 'EventReviewController@getReviewsByEventSlug');
+            Route::post('/store', 'EventReviewController@store');
+            Route::post('/store-reply-comment', 'EventReviewController@storeReplyComment');
+            Route::get('/{id}/delete', 'EventReviewController@destroy');
+            Route::get('/{id}/delete-comment/{commentId}', 'EventReviewController@destroy');
+        });
+
+    });
+
+    /* Events */
+    Route::group(['prefix' => 'meeting-packages'], function () {
+        Route::get('/', 'MeetingPackagesController@index');
+        Route::get('/{id}/free', 'MeetingPackagesController@buyFree');
+    });
 
 });
 
 // Purchase Code Routes
 Route::get('/purchase-code', [PurchaseCodeController::class, 'show'])->name('purchase.code.show');
 Route::post('/purchase-code', [PurchaseCodeController::class, 'store'])->name('purchase.code.store');
-

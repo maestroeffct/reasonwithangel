@@ -32,10 +32,10 @@
 
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label class="form-group-label">{{ trans('update.negative_grade') }}</label>
+                        <label class="form-group-label">{{ trans('quiz.negative_grade') }}</label>
                         <input type="text" name="ajax[negative_grade]" class="js-ajax-negative_grade form-control" value="{{ !empty($question_edit) ? $question_edit->negative_grade : '' }}"/>
                         <span class="invalid-feedback"></span>
-                        <p class="font-12 text-gray-500 mt-4">{{ trans('update.leave_empty_for_no_negative') }}</p>
+                        <p class="font-12 text-gray-500 mt-4">{{ trans('quiz.leave_empty_for_no_negative') }}</p>
                     </div>
                 </div>
 

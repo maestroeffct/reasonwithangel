@@ -120,9 +120,9 @@
                     $selectedTimezone = getGeneralSettings('default_time_zone');
                 @endphp
 
-                <div class="form-group ">
+                <div class="form-group js-auth-timezone-container">
                     <label class="form-group-label">{{ trans('update.timezone') }}</label>
-                    <select name="timezone" class="form-control select2" data-allow-clear="false">
+                    <select name="timezone" class="form-control select2" data-allow-clear="false" data-dropdown-parent=".js-auth-timezone-container">
                         <option value="" {{ empty($user->timezone) ? 'selected' : '' }} disabled>{{ trans('public.select') }}</option>
                         @foreach(getListOfTimezones() as $timezone)
                             <option value="{{ $timezone }}" @if($selectedTimezone == $timezone) selected @endif>{{ $timezone }}</option>
