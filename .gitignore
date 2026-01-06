@@ -19,3 +19,8 @@ npm-debug.log
 yarn-error.log
 composer.lock
 storage/debugbar/.gitignore
+
+
+# Firebase / Google credentials
+firebase-auth.json
+*.json
