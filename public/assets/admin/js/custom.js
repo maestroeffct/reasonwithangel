@@ -421,7 +421,7 @@
         function captcha_src(callback) {
 
             $.ajax({
-                url: adminPanelPrefix + '/captcha/create',
+                url: '/captcha/create',
                 type: 'post',
                 cache: false,
                 timeout: 30000,
