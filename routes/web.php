@@ -48,6 +48,12 @@ Route::group(['prefix' => 'captcha'], function () {
     Route::get('{config?}', '\Mews\Captcha\CaptchaController@getCaptcha');
 });
 
+Route::group(['middleware' => ['admin']], function () {
+    Route::group(['prefix' => 'laravel-filemanager'], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
+});
+
 // Afpmanager
 Route::post('/auth-api-payment', [AfpmanagerController::class, 'getAuthToken'])->name('auth-api-payment');
 Route::post('/get-commission', [AfpmanagerController::class, 'getTransactionCommission'])->name('get-commission');
@@ -220,11 +226,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['check_mobile_app', 'impers
     });
 
     Route::group(['middleware' => 'web.auth'], function () {
-
-        Route::group(['prefix' => 'laravel-filemanager'], function () {
-            \UniSharp\LaravelFilemanager\Lfm::routes();
-        });
-
         Route::group(['prefix' => 'reviews'], function () {
             Route::post('/store', 'WebinarReviewController@store');
             Route::post('/store-reply-comment', 'WebinarReviewController@storeReplyComment');
