@@ -667,7 +667,7 @@ $(function () {
 
 
 var lfm = function (options, cb) {
-    var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
+    var route_prefix = (options && options.prefix) ? options.prefix : '/admin/lfm';
     window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
     window.SetUrl = cb;
 };
@@ -680,7 +680,7 @@ var LFMButton = function (context) {
         tooltip: 'Insert image with filemanager',
         click: function () {
 
-            lfm({type: 'file', prefix: '/laravel-filemanager'}, function (lfmItems, path) {
+            lfm({type: 'file', prefix: '/admin/lfm'}, function (lfmItems, path) {
                 lfmItems.forEach(function (lfmItem) {
                     context.invoke('insertImage', lfmItem.url);
                 });

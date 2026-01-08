@@ -49,7 +49,7 @@ Route::group(['prefix' => 'captcha'], function () {
 });
 
 Route::group(['middleware' => ['admin']], function () {
-    Route::group(['prefix' => 'laravel-filemanager'], function () {
+    Route::group(['prefix' => 'admin/lfm'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
 });

@@ -28,7 +28,7 @@
 
     $('body').on('click', '.admin-file-manager', function (e) {
         e.preventDefault();
-        $(this).filemanager('file', {prefix: '/laravel-filemanager'})
+        $(this).filemanager('file', {prefix: '/admin/lfm'})
     });
 
     $('body').on('click', '.admin-file-view', function (e) {
