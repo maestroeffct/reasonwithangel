@@ -10,8 +10,8 @@
         {{-- Popular --}}
         @if($subscribe->is_popular)
             <div class="subscription-plan-card__popular-badge d-inline-flex-center gap-4 p-4 pr-8 rounded-32 bg-primary fon12 text-white">
-            <x-iconsax-bul-verify class="icons text-white" width="20px" height="20px"/>
-            <span class="font-12">{{ trans('panel.popular') }}</span>
+                <x-iconsax-bul-verify class="icons text-white" width="20px" height="20px"/>
+                <span class="font-12">{{ trans('panel.popular') }}</span>
             </div>
         @endif
 
@@ -71,21 +71,16 @@
             $subscribeHasInstallment = $subscribe->hasInstallment();
         @endphp
 
-        <form action="/panel/financial/pay-subscribes" method="post" class="btn-block mt-auto">
-            {{ csrf_field() }}
-            <input name="amount" value="{{ $subscribe->price }}" type="hidden">
-            <input name="id" value="{{ $subscribe->id }}" type="hidden">
 
-            <div class="d-flex align-items-center gap-8 w-100">
-                <button type="submit" class="btn btn-primary btn-lg flex-1 {{ $subscribeHasInstallment ? '' : 'btn-block' }}">{{ trans('update.purchase') }}</button>
+        <div class="d-flex align-items-center gap-8 w-100">
+            <a href="/subscribes/{{ $subscribe->id }}/details" target="_blank" class="btn btn-primary btn-lg flex-1 {{ $subscribeHasInstallment ? '' : 'btn-block' }}">{{ trans('update.purchase') }}</a>
 
-                @if($subscribeHasInstallment)
-                    <a href="/panel/financial/subscribes/{{ $subscribe->id }}/installments" class="d-flex-center size-48 rounded-12 border-2 border-gray-400 bg-white" data-tippy-content="{{ trans('update.installments') }}">
-                        <x-iconsax-lin-moneys class="icons text-gray-500" width="24px" height="24px"/>
-                    </a>
-                @endif
-            </div>
-        </form>
+            @if($subscribeHasInstallment)
+                <a href="/panel/financial/subscribes/{{ $subscribe->id }}/installments" class="d-flex-center size-48 rounded-12 border-2 border-gray-400 bg-white" data-tippy-content="{{ trans('update.installments') }}">
+                    <x-iconsax-lin-moneys class="icons text-gray-500" width="24px" height="24px"/>
+                </a>
+            @endif
+        </div>
 
     </div>
 </div>

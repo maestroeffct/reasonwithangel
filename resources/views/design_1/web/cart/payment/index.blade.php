@@ -44,16 +44,19 @@
                                     @foreach($paymentChannels as $paymentChannel)
                                         @if(!$isMultiCurrency or (!empty($paymentChannel->currencies) and in_array($userCurrency, $paymentChannel->currencies)))
                                             <div class="payment-channel-card position-relative">
-                                                <input type="radio"
-                                                       name="gateway"
-                                                       id="gateway_{{ $paymentChannel->id }}"
-                                                       data-class="{{ $paymentChannel->class_name }}"
-                                                       image="{{ $paymentChannel->image }}"
-                                                       totalprice="{{ $calculatePrices['total'] }}"
-                                                       orderid="{{ $order->id }}"
-                                                       currency="{{ $userCurrency }}"
-                                                       onchange="togglePaymentChannel(this)"
-                                                       value="{{ $paymentChannel->id }}">
+                                                <!--<input type="radio" name="gateway" id="gateway_{{ $paymentChannel->id }}" data-class="{{ $paymentChannel->class_name }}" value="{{ $paymentChannel->id }}">-->
+                                                 <input
+                                                    type="radio"
+                                                    name="gateway"
+                                                    id="gateway_{{ $paymentChannel->id }}"
+                                                    data-class="{{ $paymentChannel->class_name }}"
+                                                    value="{{ $paymentChannel->id }}"
+                                                    image="{{ $paymentChannel->image }}"
+                                                    totalprice="{{ convertPriceToUserCurrency($order->total_amount, getUserCurrencyItem(Auth::user())) }}"
+                                                    orderid="{{ $order->id }}"
+                                                    currency="{{ currency() }}"
+                                                    onchange="togglePaymentChannel(this)"
+                                                >
                                                 <label class="position-relative w-100 d-block cursor-pointer" for="gateway_{{ $paymentChannel->id }}">
                                                     <div class="gateway-mask"></div>
                                                     <div class="gateway-card position-relative z-index-2 d-flex-center flex-column rounded-16 bg-white w-100 h-100 text-center">
@@ -197,9 +200,10 @@
                     </div>
                 </div>
             </div>
-
         </form>
-
+        
+        @include('design_1.web.cart.payment.channels.afpmanager', [])
+        
     </section>
 
     @if(!empty($razorpay) and $razorpay)
@@ -219,8 +223,6 @@
             </script>
         </form>
     @endif
-
-    @include('design_1.web.cart.payment.channels.afpmanager')
 
 @endsection
 

@@ -79,7 +79,7 @@ class AfpmanagerController extends Controller
                 ];
                 $url = "{$this->InitbaseUrl}api-auth/auth";
                 $response = Http::asForm()->post($url, $payload);
-                $token = $response['token'];
+                $token = $response['result']['token'];
                 if($token){
                     return response()->json([
                         'status'    => 200,

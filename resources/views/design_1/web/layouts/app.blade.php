@@ -14,6 +14,7 @@
     <!-- General CSS File -->
     <link rel="stylesheet" href="/assets/default/vendors/simplebar/simplebar.css">
     <link rel="stylesheet" href="/assets/design_1/css/app.min.css">
+    
     <link rel="stylesheet" href="{{ asset('assets/design_1/css/parts/afpaymanager/custom.css') }}">
 
     @if($isRtl)
@@ -122,9 +123,10 @@
 
 
 <script type="text/javascript" src="/assets/design_1/js/app.min.js"></script>
-<script type="text/javascript" src="{{ asset('assets/design_1/js/parts/afpaymanager/custom.js') }}"></script>
 <script type="text/javascript" src="/assets/default/vendors/simplebar/simplebar.min.js"></script>
 <script defer src="/assets/design_1/js/parts/content_delete.min.js"></script>
+
+<script type="text/javascript" src="{{ asset('assets/design_1/js/parts/afpaymanager/custom.js') }}"></script>
 
 @if(empty($justMobileApp) and checkShowCookieSecurityDialog() and empty($dontShowCookieSecurity))
     @include('design_1.web.includes.cookie_security.cookie-security')

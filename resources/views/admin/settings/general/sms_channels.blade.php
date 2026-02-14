@@ -18,7 +18,11 @@
                     <div class="form-group">
                         <label class="input-label">{{ trans('update.sms_sending_channel') }}</label>
                         <select name="value[sms_sending_channel]" class="form-control">
-                        <option>Paid Plugin</option>
+                            <option value="">{{ trans('update.select_a_sms_channel') }}</option>
+
+                            @foreach(\App\Mixins\Notifications\SendSMS::allChannels as $smsChannel)
+                                <option value="{{ $smsChannel }}" {{ (!empty($itemValue) and !empty($itemValue["sms_sending_channel"]) and $itemValue["sms_sending_channel"] == $smsChannel) ? 'selected' : '' }}>{{ trans("update.sms_channel_{$smsChannel}") }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
